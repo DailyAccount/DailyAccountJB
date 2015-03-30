@@ -32,7 +32,6 @@ public class T_sumsave {
     }
 
     public void save_T_income(T_income_account account2) {
-        // TODO Auto-generated method stub
         T_sum_process dataprocess = new T_sum_process(context);
         if (dataprocess.find(2) == null) {
             T_sum_account a = new T_sum_account("Income", account2.getAmount(), 1);
@@ -47,7 +46,6 @@ public class T_sumsave {
     }
 
     public void save_T_liability(T_liability_account account3) {
-        // TODO Auto-generated method stub
         Log.i("Testing save T_sum", "Working");
         T_sum_process dataprocess = new T_sum_process(context);
         if (dataprocess.find(3) == null) {

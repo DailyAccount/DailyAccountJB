@@ -62,7 +62,6 @@ public class T_liability_account {
 
 
     public void setDate() {
-        // TODO Auto-generated method stub
         Calendar c = Calendar.getInstance();
         //ȡ��ϵͳ����:
         this.year = c.get(Calendar.YEAR);

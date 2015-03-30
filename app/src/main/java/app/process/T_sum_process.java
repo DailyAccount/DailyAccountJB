@@ -45,7 +45,6 @@ public class T_sum_process {
 
 
     public void updata(T_sum_account account) {
-        // TODO Auto-generated method stub
         SQLiteDatabase db = database.getWritableDatabase();
         db.execSQL("update generalEntry set name=?,sum=?,amount=? where Id=?",
                 new Object[]{account.getName(), account.getSum(), account.getAmount(), account.getId()});

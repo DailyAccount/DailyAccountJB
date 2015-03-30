@@ -72,7 +72,6 @@ public class T_income_process {
     }
 
     public void updata(T_income_account account) {
-        // TODO Auto-generated method stub
         SQLiteDatabase db = database.getWritableDatabase();
         db.execSQL("update generalEntry set account=?,amount=? where accountId=?",
                 new Object[]{account.getAccount(), account.getAmount(), account.getId()});
