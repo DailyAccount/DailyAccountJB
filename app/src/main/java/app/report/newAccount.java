@@ -1,6 +1,5 @@
 package app.report;
 
-
 import android.os.Build;
 import android.os.Bundle;
 
@@ -21,113 +20,100 @@ import android.content.*;
 import android.util.*;
 
 import android.media.*;
+
 import app.account.AccountStatus;
 import app.process.DataStatusProcess;
 
+public class newAccount extends Activity implements OnClickListener {
 
-public class newAccount extends Activity implements OnClickListener
-{
-	
-	
-	private Spinner spinner;  
-	private ArrayAdapter adapter; 
-	private EditText et;
-	private static String selected;
-	private static boolean sign = false;
-	
+    private Spinner spinner;
+    private ArrayAdapter adapter;
+    private EditText et;
+    private static String selected;
+    private static boolean sign = false;
 
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-		super.onCreate(savedInstanceState);
-		
-    	
-		setContentView(R.layout.entryaccount);
-		
-	 	View saveButton = this.findViewById(R.id.save_button);
-		saveButton.setOnClickListener(this);
-		
-		setSpinner();
-		
-		et = (EditText)this.findViewById(R.id.amount);
-		
-	}
-	
-	private void setSpinner() 
-	{
-        spinner = (Spinner) findViewById(R.id.category);
-		
-		//½«¿ÉÑ¡ÄÚÈÝÓëArrayAdapterÁ¬½ÓÆðÀ´  
-		adapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);  
-		
-		//ÉèÖÃÏÂÀ­ÁÐ±íµÄ·ç¸ñ   
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  
-		
-		//½«adapter2 Ìí¼Óµ½spinnerÖÐ  
-		spinner.setAdapter(adapter);  
-		  
-		//Ìí¼ÓÊÂ¼þSpinnerÊÂ¼þ¼àÌý    
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener()
-		{  
-			public void onItemSelected(  AdapterView<?> parent,  View view,  int position,  long id) 
-			{  
-				Spinner spinner = (Spinner) parent;  
-				//Log.v("Test", "id = " + id + "("  + spinner.getSelectedItem().toString() + ")");
-				selected = spinner.getSelectedItem().toString();
-				check(id);
-			
-		    }  
-		
-			public void onNothingSelected(AdapterView<?> parent) 
-			{  
-				
-			}  
-		});  
-	}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	private void check(long id) 
-	{
-		 
-		switch((int)id)
-		{
-		   case 6: //debt
-				Intent i = new Intent(this, debt.class);
-				startActivity(i);
-				break;
-		   case 7: //revenue
-			    Intent k = new Intent(this,revenue.class);
-			    startActivity(k);
-			    break;
-		   case 8: //other entry
-			    Intent t = new Intent(this, OtherExpense.class);
-				startActivity(t);
-				break;
-		}
-		
-	}
-	public void onClick(View v)
-    {
-    	switch (v.getId())
-    	{
-    	    case R.id.save_button:
-    	    	String amount = et.getText().toString();
-    	    	//Log.d("Amount", amount);
-    	    	setNewAccount(amount);
-    	    	Intent i = new Intent(this, showBalance.class);
-    	    	i.putExtra("level", "0");
-    			startActivity(i);
-    	    	break;
-    	    case R.id.cancel_botton:
-    	    	finish();
-    	    	break;
-    	}
-    	
+        setContentView(R.layout.entryaccount);
+
+        View saveButton = this.findViewById(R.id.save_button);
+        saveButton.setOnClickListener(this);
+
+        setSpinner();
+
+        et = (EditText) this.findViewById(R.id.amount);
+
     }
 
-	//save in the database
-	private void setNewAccount(String amount) 
-	{
-		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
-		newAccount.saveAccount(1,selected,amount);
-	}
-	
+    private void setSpinner() {
+        spinner = (Spinner) findViewById(R.id.category);
+
+        //ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ArrayAdapterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        adapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);
+
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ä·ï¿½ï¿½
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //ï¿½ï¿½adapter2 ï¿½ï¿½Óµï¿½spinnerï¿½ï¿½
+        spinner.setAdapter(adapter);
+
+        //ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Spinnerï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Spinner spinner = (Spinner) parent;
+                //Log.v("Test", "id = " + id + "("  + spinner.getSelectedItem().toString() + ")");
+                selected = spinner.getSelectedItem().toString();
+                check(id);
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void check(long id) {
+
+        switch ((int) id) {
+            case 6: //debt
+                Intent i = new Intent(this, debt.class);
+                startActivity(i);
+                break;
+            case 7: //revenue
+                Intent k = new Intent(this, revenue.class);
+                startActivity(k);
+                break;
+            case 8: //other entry
+                Intent t = new Intent(this, OtherExpense.class);
+                startActivity(t);
+                break;
+        }
+
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.save_button:
+                String amount = et.getText().toString();
+                //Log.d("Amount", amount);
+                setNewAccount(amount);
+                Intent i = new Intent(this, showBalance.class);
+                i.putExtra("level", "0");
+                startActivity(i);
+                break;
+            case R.id.cancel_botton:
+                finish();
+                break;
+        }
+
+    }
+
+    //save in the database
+    private void setNewAccount(String amount) {
+        saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
+        newAccount.saveAccount(1, selected, amount);
+    }
+
 }

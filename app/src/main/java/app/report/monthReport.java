@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
+
 import app.account.T_expenditure_account;
 import app.account.T_income_account;
 import app.process.T_expenditure_process;
@@ -22,63 +23,56 @@ import app.report.R;
 import app.report.R.id;
 import app.report.R.layout;
 
-public class monthReport extends Activity implements OnClickListener
-{
-	
-	 private ListView listView;
-	 private EditText beginningdate,endingdate;
-	 private String dateMin="0",dateMax="0";
-	 //private String[] name = {"John","Jason","James","Duran"};
-	
-	 protected void onCreate(Bundle savedInstanceState)
-	 {
-		 Log.i("Working", "Enter the monthReport");
-	  	 super.onCreate(savedInstanceState);
-	   	 setContentView(R.layout.monthreport);
-	   	 
-	   	 beginningdate = (EditText)this.findViewById(R.id.beginningdate);
-		 endingdate = (EditText)this.findViewById(R.id.endingdate);
-	   	 
-		 View searchButton = this.findViewById(R.id.search);
-		 searchButton.setOnClickListener(this);
-			
-	   	 setListView();
-	 }
+public class monthReport extends Activity implements OnClickListener {
 
-	private void setListView() 
-	{
+    private ListView listView;
+    private EditText beginningdate, endingdate;
+    private String dateMin = "0", dateMax = "0";
+    //private String[] name = {"John","Jason","James","Duran"};
+
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.i("Working", "Enter the monthReport");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.monthreport);
+
+        beginningdate = (EditText) this.findViewById(R.id.beginningdate);
+        endingdate = (EditText) this.findViewById(R.id.endingdate);
+
+        View searchButton = this.findViewById(R.id.search);
+        searchButton.setOnClickListener(this);
+
+        setListView();
+    }
+
+    private void setListView() {
         listView = (ListView) findViewById(R.id.listview);
-        
+
         setAdapter();
         listView.setClickable(true);
-        
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-        	
-        	public void onItemClick(AdapterView<?> parent, View view,     int position, long id) 
-        	{   //ÕâÀïÃæ¿ÉÒÔÅªswitch£¨position£©»òÕß±ðµÄ
-        	    //case£¨1£©
-        		Log.d("ListView", "Working"+position);
-        		switch(position)
-        		{
-        		   case 0:
-        			   startIntent_expenditure();
-        			   break;
-        		   case 1:
-        			   startIntent_income();
-        			   break;
-        		   case 2:
-        			   startIntent_liability();
-        			   break;
-        		   default:break;
-        		}
-        	}//¾ÍÌø×ªµ½ÁíÒ»¸öÒ³Ãæ
 
-		
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åªswitchï¿½ï¿½positionï¿½ï¿½ï¿½ï¿½ï¿½ß±ï¿½ï¿½
+                //caseï¿½ï¿½1ï¿½ï¿½
+                Log.d("ListView", "Working" + position);
+                switch (position) {
+                    case 0:
+                        startIntent_expenditure();
+                        break;
+                    case 1:
+                        startIntent_income();
+                        break;
+                    case 2:
+                        startIntent_liability();
+                        break;
+                    default:
+                        break;
+                }
+            }//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ò³ï¿½ï¿½
+
+
         });
-		/*
+        /*
 		listView.setOnItemClickListener(new OnItemSelectedListener()
 		{
 
@@ -95,136 +89,126 @@ public class monthReport extends Activity implements OnClickListener
 
 			
 		});	*/
-	}
-    private void startIntent_expenditure() 
-    {
-	    Intent i = new Intent(this, ReportExpenditure.class);
-	    i.putExtra("beginningdate", dateMin);
-	    i.putExtra("endingdate", dateMax);
-	    startActivity(i);
-	}
-	private void startIntent_liability() 
-	{
-		Intent i = new Intent(this, ReportLiability.class);
-		i.putExtra("beginningdate", dateMin);
-	    i.putExtra("endingdate", dateMax);
-	    startActivity(i);
-	}
+    }
 
-	private void startIntent_income() 
-	{
-		Intent i = new Intent(this, ReportIncome.class);
-		i.putExtra("beginningdate", dateMin);
-	    i.putExtra("endingdate", dateMax);
-	    startActivity(i);
-	}
-	private void setAdapter() 
-	{
-		//String set
-		
-	    //String name = ;
-		
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);
-        
+    private void startIntent_expenditure() {
+        Intent i = new Intent(this, ReportExpenditure.class);
+        i.putExtra("beginningdate", dateMin);
+        i.putExtra("endingdate", dateMax);
+        startActivity(i);
+    }
+
+    private void startIntent_liability() {
+        Intent i = new Intent(this, ReportLiability.class);
+        i.putExtra("beginningdate", dateMin);
+        i.putExtra("endingdate", dateMax);
+        startActivity(i);
+    }
+
+    private void startIntent_income() {
+        Intent i = new Intent(this, ReportIncome.class);
+        i.putExtra("beginningdate", dateMin);
+        i.putExtra("endingdate", dateMax);
+        startActivity(i);
+    }
+
+    private void setAdapter() {
+        //String set
+
+        //String name = ;
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, 0);
+
         setList(adapter);
-        
+
         //adapter.addAll(name);
-		
-		listView.setAdapter(adapter);		
-	}
 
-	@SuppressLint("NewApi")
-	private void setList( ArrayAdapter adapter) 
-	{
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//String[] name = null;
-		//name[0]="John";
-		//name[1]="Jason";
-		T_sum_process dataprocess = new T_sum_process(this.getBaseContext());
-   	    long length = dataprocess.getCount();
-   	    //Log.i("Database size", length+""+name[1]);
-   	    //AccountEntry account;
-   	    for(int i = 1; i<=(int)length;i++)
-   	    {
-   	    	//DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
-   	    	//name[i-1] = 
-   	    	//adapter.addAll(dataprocess1.find(i).getAccount());
-   	    	adapter.add(dataprocess.find(i).getName()+"   "+dataprocess.find(i).getSum());
-   	    	//name[i-1] = String.valueOf(account.getAccount());
-   	    }
-   	    //return name;
-   	    
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//return name;
-		
-	}
+        listView.setAdapter(adapter);
+    }
 
-	@Override
-	public void onClick(View v) 
-	{
-		switch(v.getId())
-		{
-		case R.id.search:
-			setNewList();	
-			break;
-		}
-	}
+    @SuppressLint("NewApi")
+    private void setList(ArrayAdapter adapter) {
 
-	// rebuild the adapter
-	//create a new list
-	private void setNewList() 
-	{
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);		
-		
+        //String[] name = {"John","Jason","James","Duran"};
+        //String[] name = null;
+        //name[0]="John";
+        //name[1]="Jason";
+        T_sum_process dataprocess = new T_sum_process(this.getBaseContext());
+        long length = dataprocess.getCount();
+        //Log.i("Database size", length+""+name[1]);
+        //AccountEntry account;
+        for (int i = 1; i <= (int) length; i++) {
+            //DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
+            //name[i-1] =
+            //adapter.addAll(dataprocess1.find(i).getAccount());
+            adapter.add(dataprocess.find(i).getName() + "   " + dataprocess.find(i).getSum());
+            //name[i-1] = String.valueOf(account.getAccount());
+        }
+        //return name;
+
+
+        //String[] name = {"John","Jason","James","Duran"};
+        //return name;
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.search:
+                setNewList();
+                break;
+        }
+    }
+
+    // rebuild the adapter
+    //create a new list
+    private void setNewList() {
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, 0);
+
         dateMin = beginningdate.getText().toString();
-		dateMax = endingdate.getText().toString();
-		int expenditure_result = setResult_expenditure(Integer.parseInt(dateMin),Integer.parseInt(dateMax));
-		
-		adapter.add("Expenditure    "+expenditure_result);
-		
-		int income_result = setResult_income(Integer.parseInt(dateMin),Integer.parseInt(dateMax));
-		
-		adapter.add("Income    "+income_result);
-		
-		listView.setAdapter(adapter);	
-	}
+        dateMax = endingdate.getText().toString();
+        int expenditure_result = setResult_expenditure(Integer.parseInt(dateMin), Integer.parseInt(dateMax));
 
-	// calculate the total amount
-	private int setResult_expenditure(int dateMin,int dateMax) 
-	{
-		  T_expenditure_process personService = new T_expenditure_process(this.getBaseContext());
-	  	  Cursor result = personService.findDate(dateMin,dateMax);
-	  	  int amount = 0;
-	  	  
-	  	  for(result.moveToFirst();!result.isAfterLast();result.moveToNext())
-	      {
-	      	 T_expenditure_account account = new T_expenditure_account();
-	      	 //account.setId(result.getInt(result.getColumnIndex("accountId")));
-	       	 amount +=result.getInt(2);
-	       		 //return account;
-	      }
-	      Log.i("Test find amount",amount+""); 
-	      return amount;  
-	  	  
-	}
-	
-	private int setResult_income(int dateMin,int dateMax) 
-	{
-		  T_income_process personService = new T_income_process(this.getBaseContext());
-	  	  Cursor result = personService.findDate(dateMin,dateMax);
-	  	  int amount = 0;
-	  	  
-	  	  for(result.moveToFirst();!result.isAfterLast();result.moveToNext())
-	      {
-	      	 T_income_account account = new T_income_account();
-	      	 //account.setId(result.getInt(result.getColumnIndex("accountId")));
-	       	 amount +=result.getInt(2);
-	       		 //return account;
-	      }
-	      Log.i("Test find amount",amount+""); 
-	      return amount;  
-	  	  
-	}
+        adapter.add("Expenditure    " + expenditure_result);
+
+        int income_result = setResult_income(Integer.parseInt(dateMin), Integer.parseInt(dateMax));
+
+        adapter.add("Income    " + income_result);
+
+        listView.setAdapter(adapter);
+    }
+
+    // calculate the total amount
+    private int setResult_expenditure(int dateMin, int dateMax) {
+        T_expenditure_process personService = new T_expenditure_process(this.getBaseContext());
+        Cursor result = personService.findDate(dateMin, dateMax);
+        int amount = 0;
+
+        for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
+            T_expenditure_account account = new T_expenditure_account();
+            //account.setId(result.getInt(result.getColumnIndex("accountId")));
+            amount += result.getInt(2);
+            //return account;
+        }
+        Log.i("Test find amount", amount + "");
+        return amount;
+
+    }
+
+    private int setResult_income(int dateMin, int dateMax) {
+        T_income_process personService = new T_income_process(this.getBaseContext());
+        Cursor result = personService.findDate(dateMin, dateMax);
+        int amount = 0;
+
+        for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
+            T_income_account account = new T_income_account();
+            //account.setId(result.getInt(result.getColumnIndex("accountId")));
+            amount += result.getInt(2);
+            //return account;
+        }
+        Log.i("Test find amount", amount + "");
+        return amount;
+
+    }
 }

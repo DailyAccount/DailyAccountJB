@@ -11,119 +11,106 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
+
 import app.account.T_expenditure_account;
 import app.process.T_expenditure_process;
 import app.report.R;
 import app.report.R.id;
 import app.report.R.layout;
 
-public class ReportExpenditure extends Activity
-{
-	
-	 private ListView listView;
-	 //private String[] name = {"John","Jason","James","Duran"};
-	
-	 protected void onCreate(Bundle savedInstanceState)
-	 {
-		 Log.i("Working", "Enter the monthReport");
-	  	 super.onCreate(savedInstanceState);
-	   	 setContentView(R.layout.monthreport);
-	   	 
-	   	 Intent i = getIntent();
-	   	 String dateMin = i.getStringExtra("beginningdate");
-	   	 String dateMax = i.getStringExtra("endingdate");
-	   	 
-	   	 setListView(dateMin,dateMax);
-	 }
+public class ReportExpenditure extends Activity {
 
-	private void setListView(String dateMin, String dateMax) 
-	{
+    private ListView listView;
+    //private String[] name = {"John","Jason","James","Duran"};
+
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.i("Working", "Enter the monthReport");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.monthreport);
+
+        Intent i = getIntent();
+        String dateMin = i.getStringExtra("beginningdate");
+        String dateMax = i.getStringExtra("endingdate");
+
+        setListView(dateMin, dateMax);
+    }
+
+    private void setListView(String dateMin, String dateMax) {
         listView = (ListView) findViewById(R.id.listview);
-        
-        setAdapter(dateMin,dateMax);
+
+        setAdapter(dateMin, dateMax);
         listView.setClickable(true);
-        
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-        	
-        	public void onItemClick(AdapterView<?> parent, View view,     int position, long id) 
-        	{   //ÕâÀïÃæ¿ÉÒÔÅªswitch£¨position£©»òÕß±ðµÄ
-        	    //case£¨1£©
-        		Log.d("ListView", "Working"+position);
-       
-        	}//¾ÍÌø×ªµ½ÁíÒ»¸öÒ³Ãæ
 
-		
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åªswitchï¿½ï¿½positionï¿½ï¿½ï¿½ï¿½ï¿½ß±ï¿½ï¿½
+                //caseï¿½ï¿½1ï¿½ï¿½
+                Log.d("ListView", "Working" + position);
+
+            }//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ò³ï¿½ï¿½
+
+
         });
 
-	}
+    }
 
-	private void setAdapter(String dateMin, String dateMax) 
-	{
-	    //String name = ;
-		
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);
-        
-        setList(adapter,Integer.parseInt(dateMin),Integer.parseInt(dateMax));
-        
+    private void setAdapter(String dateMin, String dateMax) {
+        //String name = ;
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, 0);
+
+        setList(adapter, Integer.parseInt(dateMin), Integer.parseInt(dateMax));
+
         //adapter.addAll(name);
-		
-		listView.setAdapter(adapter);		
-	}
 
-	@SuppressLint("NewApi")
-	private void setList( ArrayAdapter adapter,int dateMin, int dateMax) 
-	{
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//String[] name = null;
-		//name[0]="John";
-		//name[1]="Jason";
-		
-		if(dateMin == 0)
-		{
-			
-		   T_expenditure_process dataprocess = new T_expenditure_process(this.getBaseContext());
-   	       long length = dataprocess.getCount();
-    	   //Log.i("Database size", length+""+name[1]);
-    	   //AccountEntry account;
-   	       for(int i = 1; i<=(int)length;i++)
-   	       {
-    	    	//DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
-    	    	//name[i-1] = 
-     	    	//  adapter.addAll(dataprocess1.find(i).getAccount());
-   	    	    adapter.add(dataprocess.find(i).getAccount()+"   "+dataprocess.find(i).getAmount());
-     	    	//name[i-1] = String.valueOf(account.getAccount());
-   	       }
-		}
-		else
-		{
-			
-			  T_expenditure_process dataprocess = new T_expenditure_process(this.getBaseContext());
-			  Cursor result = T_expenditure_process.findDate(dateMin,dateMax);
-		  	  int amount = 0;
-		  	  
-		  	  for(result.moveToFirst();!result.isAfterLast();result.moveToNext())
-	      	  {
-	      		 T_expenditure_account account = new T_expenditure_account();
-	      		 //account.setId(result.getInt(result.getColumnIndex("accountId")));
-	       		 account.setAccount(result.getString(1));
-	       		 account.setAmount(result.getInt(2));
-	       		 account.setTotalAmount(result.getInt(3));
-	       		 account.setDate_year(result.getInt(4));
-	        	 account.setDate_month(result.getInt(5));
-	        	 account.setDate_day(result.getInt(6));
-	        	 adapter.add(account.getAccount()+"   "+account.getAmount());
-	       		 //return account;
-	      	  }
-		}
-   	    //return name;
-   	    
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//return name;
-		
-	}
+        listView.setAdapter(adapter);
+    }
+
+    @SuppressLint("NewApi")
+    private void setList(ArrayAdapter adapter, int dateMin, int dateMax) {
+
+        //String[] name = {"John","Jason","James","Duran"};
+        //String[] name = null;
+        //name[0]="John";
+        //name[1]="Jason";
+
+        if (dateMin == 0) {
+
+            T_expenditure_process dataprocess = new T_expenditure_process(this.getBaseContext());
+            long length = dataprocess.getCount();
+            //Log.i("Database size", length+""+name[1]);
+            //AccountEntry account;
+            for (int i = 1; i <= (int) length; i++) {
+                //DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
+                //name[i-1] =
+                //  adapter.addAll(dataprocess1.find(i).getAccount());
+                adapter.add(dataprocess.find(i).getAccount() + "   " + dataprocess.find(i).getAmount());
+                //name[i-1] = String.valueOf(account.getAccount());
+            }
+        } else {
+
+            T_expenditure_process dataprocess = new T_expenditure_process(this.getBaseContext());
+            Cursor result = T_expenditure_process.findDate(dateMin, dateMax);
+            int amount = 0;
+
+            for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
+                T_expenditure_account account = new T_expenditure_account();
+                //account.setId(result.getInt(result.getColumnIndex("accountId")));
+                account.setAccount(result.getString(1));
+                account.setAmount(result.getInt(2));
+                account.setTotalAmount(result.getInt(3));
+                account.setDate_year(result.getInt(4));
+                account.setDate_month(result.getInt(5));
+                account.setDate_day(result.getInt(6));
+                adapter.add(account.getAccount() + "   " + account.getAmount());
+                //return account;
+            }
+        }
+        //return name;
+
+
+        //String[] name = {"John","Jason","James","Duran"};
+        //return name;
+
+    }
 }

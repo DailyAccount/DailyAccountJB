@@ -22,28 +22,26 @@ import android.util.*;
 
 import android.media.*;
 
-public class newAccount_spinner 
-{
-	
-	private Spinner spinner;  
-	private ArrayAdapter adapter; 
-	private static String selected; 
-	
-	public newAccount_spinner()
-    {
-		/*
+public class newAccount_spinner {
+
+    private Spinner spinner;
+    private ArrayAdapter adapter;
+    private static String selected;
+
+    public newAccount_spinner() {
+        /*
         spinner = (Spinner) findViewById(R.id.category);
 		
-		//½«¿ÉÑ¡ÄÚÈİÓëArrayAdapterÁ¬½ÓÆğÀ´  
+		//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ArrayAdapterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 		adapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);  
 		
-		//ÉèÖÃÏÂÀ­ÁĞ±íµÄ·ç¸ñ   
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½Ä·ï¿½ï¿½   
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  
 		
-		//½«adapter2 Ìí¼Óµ½spinnerÖĞ  
+		//ï¿½ï¿½adapter2 ï¿½ï¿½Óµï¿½spinnerï¿½ï¿½  
 		spinner.setAdapter(adapter);  
 		  
-		//Ìí¼ÓÊÂ¼şSpinnerÊÂ¼ş¼àÌı    
+		//ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Spinnerï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½    
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener()
 		{  
 			public void onItemSelected(  AdapterView<?> parent,  View view,  int position,  long id) 
@@ -58,9 +56,8 @@ public class newAccount_spinner
 		});  
 */
     }
-	
-	public String getSelected()
-	{
-		return selected; 
-	}
+
+    public String getSelected() {
+        return selected;
+    }
 }
