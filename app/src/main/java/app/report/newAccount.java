@@ -54,7 +54,6 @@ public class newAccount extends Activity implements OnClickListener
 	
 	private void setSpinner() 
 	{
-		// TODO Auto-generated method stub
         spinner = (Spinner) findViewById(R.id.category);
 		
 		//将可选内容与ArrayAdapter连接起来  
@@ -87,7 +86,6 @@ public class newAccount extends Activity implements OnClickListener
 
 	private void check(long id) 
 	{
-		// TODO Auto-generated method stub
 		 
 		switch((int)id)
 		{
@@ -128,7 +126,6 @@ public class newAccount extends Activity implements OnClickListener
 	//save in the database
 	private void setNewAccount(String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(1,selected,amount);
 	}

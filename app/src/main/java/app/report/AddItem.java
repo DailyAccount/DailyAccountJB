@@ -55,7 +55,6 @@ public class AddItem extends Activity implements OnClickListener
 	
 	private void saveAccount(String name, String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(4, name,amount);
 	}

@@ -13,7 +13,6 @@ public class T_sumsave
      private Context context;
      public T_sumsave(Context context) 
      {
-		// TODO Auto-generated constructor stub
     	 this.context = context;
 	 }
 

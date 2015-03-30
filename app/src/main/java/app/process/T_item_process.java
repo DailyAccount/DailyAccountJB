@@ -51,7 +51,6 @@ import app.dababase.T_item_helper;
 	    
 		public void updata(T_item_account account) 
 		{
-			// TODO Auto-generated method stub
 			SQLiteDatabase db = database.getWritableDatabase();
 			db.execSQL("update generalEntry set name=?,status=? where accountId=?", 
 					new Object[]{account.getName(),account.getStatus(),account.getId()});

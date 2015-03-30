@@ -45,7 +45,6 @@ public class OtherExpense extends Activity implements OnClickListener
 	
 	private void check() 
 	{
-		// TODO Auto-generated method stub
 		if(id!=0)
 		{
 			T_item_process dataprocess = new T_item_process(this.getBaseContext());
@@ -78,7 +77,6 @@ public class OtherExpense extends Activity implements OnClickListener
 	
 	private void saveAccount(String name, String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(1,name,amount);
 	}

@@ -47,7 +47,6 @@ public class monthReport extends Activity implements OnClickListener
 
 	private void setListView() 
 	{
-		// TODO Auto-generated method stub
         listView = (ListView) findViewById(R.id.listview);
         
         setAdapter();
@@ -85,14 +84,12 @@ public class monthReport extends Activity implements OnClickListener
 
 			public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) 
 			{
-				// TODO Auto-generated method stub
 				//Toast.makeText(MainActivity.this, name[arg2], Toast.LENGTH_LONG).show();
 				Log.d("TextView", "Working");
 			}
 			
 			public void onNothingSelected(AdapterView<?> arg0) 
 			{
-				// TODO Auto-generated method stub
 				Log.d("Text View Nothing", "Nothing");
 			}
 
@@ -101,7 +98,6 @@ public class monthReport extends Activity implements OnClickListener
 	}
     private void startIntent_expenditure() 
     {
-				// TODO Auto-generated method stub
 	    Intent i = new Intent(this, ReportExpenditure.class);
 	    i.putExtra("beginningdate", dateMin);
 	    i.putExtra("endingdate", dateMax);
@@ -109,7 +105,6 @@ public class monthReport extends Activity implements OnClickListener
 	}
 	private void startIntent_liability() 
 	{
-		// TODO Auto-generated method stub
 		Intent i = new Intent(this, ReportLiability.class);
 		i.putExtra("beginningdate", dateMin);
 	    i.putExtra("endingdate", dateMax);
@@ -118,7 +113,6 @@ public class monthReport extends Activity implements OnClickListener
 
 	private void startIntent_income() 
 	{
-		// TODO Auto-generated method stub
 		Intent i = new Intent(this, ReportIncome.class);
 		i.putExtra("beginningdate", dateMin);
 	    i.putExtra("endingdate", dateMax);
@@ -126,7 +120,6 @@ public class monthReport extends Activity implements OnClickListener
 	}
 	private void setAdapter() 
 	{
-		// TODO Auto-generated method stub
 		//String set
 		
 	    //String name = ;
@@ -143,7 +136,6 @@ public class monthReport extends Activity implements OnClickListener
 	@SuppressLint("NewApi")
 	private void setList( ArrayAdapter adapter) 
 	{
-		// TODO Auto-generated method stub
 		
 		//String[] name = {"John","Jason","James","Duran"};
 		//String[] name = null;
@@ -172,7 +164,6 @@ public class monthReport extends Activity implements OnClickListener
 	@Override
 	public void onClick(View v) 
 	{
-		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
 		case R.id.search:
@@ -185,7 +176,6 @@ public class monthReport extends Activity implements OnClickListener
 	//create a new list
 	private void setNewList() 
 	{
-		// TODO Auto-generated method stub
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);		
 		
         dateMin = beginningdate.getText().toString();
@@ -204,7 +194,6 @@ public class monthReport extends Activity implements OnClickListener
 	// calculate the total amount
 	private int setResult_expenditure(int dateMin,int dateMax) 
 	{
-		 // TODO Auto-generated method stub
 		  T_expenditure_process personService = new T_expenditure_process(this.getBaseContext());
 	  	  Cursor result = personService.findDate(dateMin,dateMax);
 	  	  int amount = 0;
@@ -223,7 +212,6 @@ public class monthReport extends Activity implements OnClickListener
 	
 	private int setResult_income(int dateMin,int dateMax) 
 	{
-		 // TODO Auto-generated method stub
 		  T_income_process personService = new T_income_process(this.getBaseContext());
 	  	  Cursor result = personService.findDate(dateMin,dateMax);
 	  	  int amount = 0;

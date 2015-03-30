@@ -32,7 +32,6 @@ public class ReportLiability extends Activity
 
 	private void setListView() 
 	{
-		// TODO Auto-generated method stub
         listView = (ListView) findViewById(R.id.listview);
         
         setAdapter();
@@ -57,7 +56,6 @@ public class ReportLiability extends Activity
 
 	private void setAdapter() 
 	{
-		// TODO Auto-generated method stub
 		//String set
 		
 	    //String name = ;
@@ -74,7 +72,6 @@ public class ReportLiability extends Activity
 	@SuppressLint("NewApi")
 	private void setList( ArrayAdapter adapter) 
 	{
-		// TODO Auto-generated method stub
 		
 		//String[] name = {"John","Jason","James","Duran"};
 		//String[] name = null;

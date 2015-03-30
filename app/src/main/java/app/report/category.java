@@ -32,7 +32,6 @@ public class category extends Activity
 
 	private void pickCategory(int diff) 
 	{
-		// TODO Auto-generated method stub
         switch(diff)
         {
         case EXPENSE:

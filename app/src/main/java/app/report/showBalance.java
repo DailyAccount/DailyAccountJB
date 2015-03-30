@@ -45,7 +45,6 @@ public class showBalance extends Activity
     
 	private void show_liability() 
 	{
-		// TODO Auto-generated method stub
 		accountName = (EditText)this.findViewById(R.id.accountName);
 		accountAmount = (EditText)this.findViewById(R.id.AccountAmount);
 		balance = (EditText)this.findViewById(R.id.balanceAmount);
@@ -58,7 +57,6 @@ public class showBalance extends Activity
 
 	private void show_income() 
 	{
-		// TODO Auto-generated method stub
 		accountName = (EditText)this.findViewById(R.id.accountName);
 		accountAmount = (EditText)this.findViewById(R.id.AccountAmount);
 		balance = (EditText)this.findViewById(R.id.balanceAmount);
@@ -71,7 +69,6 @@ public class showBalance extends Activity
 
 	private void show_expenditure() 
 	{
-		// TODO Auto-generated method stub
 		accountName = (EditText)this.findViewById(R.id.accountName);
 		accountAmount = (EditText)this.findViewById(R.id.AccountAmount);
 		balance = (EditText)this.findViewById(R.id.balanceAmount);
@@ -85,7 +82,6 @@ public class showBalance extends Activity
 
 	private T_expenditure_account findAccount_expenditure() 
 	{
-		// TODO Auto-generated method stub
 		T_expenditure_process dataprocess = new T_expenditure_process(this.getBaseContext());
 		long length = dataprocess.getCount();
 	  	T_expenditure_account account = dataprocess.find((int)length);
@@ -95,7 +91,6 @@ public class showBalance extends Activity
 	
 	private T_income_account findAccount_income() 
 	{
-		// TODO Auto-generated method stub
 		T_income_process dataprocess = new T_income_process(this.getBaseContext());
 		long length = dataprocess.getCount();
 	  	T_income_account account = dataprocess.find((int)length);
@@ -105,7 +100,6 @@ public class showBalance extends Activity
 	
 	private T_liability_account findAccount_liability() 
 	{
-		// TODO Auto-generated method stub
 		T_liability_process dataprocess = new T_liability_process(this.getBaseContext());
 		long length = dataprocess.getCount();
 	  	T_liability_account account = dataprocess.find((int)length);

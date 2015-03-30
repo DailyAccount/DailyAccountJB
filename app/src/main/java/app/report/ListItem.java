@@ -43,7 +43,6 @@ public class ListItem extends Activity
 	
 	private void setListView() 
 	{
-		// TODO Auto-generated method stub
         listView = (ListView) findViewById(R.id.additem_listview);
         
         setAdapter();
@@ -83,7 +82,6 @@ public class ListItem extends Activity
 	
 	private void Purchase(int position) 
 	{
-		// TODO Auto-generated method stub
 	    Intent i = new Intent(this, OtherExpense.class);
 	    i.putExtra("ID", position+"");
 	    startActivity(i);
@@ -91,14 +89,12 @@ public class ListItem extends Activity
 	
 	private void addItem() 
 	{
-		// TODO Auto-generated method stub
 		Intent k = new Intent(this, AddItem.class);
 	    startActivity(k);	
 	}
 	
 	private void setAdapter() 
 	{
-		// TODO Auto-generated method stub
 		//String set
 		
 	    //String name = ;
@@ -114,7 +110,6 @@ public class ListItem extends Activity
 
 	private void setList( ArrayAdapter adapter) 
 	{
-		// TODO Auto-generated method stub
 		
 	
 		T_item_process dataprocess = new T_item_process(this.getBaseContext());
@@ -149,7 +144,6 @@ public class ListItem extends Activity
 	@Override
 	public void onClick(View v) 
 	{
-		// TODO Auto-generated method stub
 		switch(v.getId())
 		{
 	    	case R.id.addnewitem_save:
@@ -177,7 +171,6 @@ public class ListItem extends Activity
 	}
 	private void saveAccount(String name, String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(4, name,amount);
 	}
