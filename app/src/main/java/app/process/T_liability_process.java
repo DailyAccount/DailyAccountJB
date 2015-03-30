@@ -50,7 +50,6 @@ public class T_liability_process {
 
 
     public void updata(T_liability_account account) {
-        // TODO Auto-generated method stub
         SQLiteDatabase db = database.getWritableDatabase();
         db.execSQL("update generalEntry set account=?,amount=? where accountId=?",
                 new Object[]{account.getName(), account.getAmount(), account.getId()});
