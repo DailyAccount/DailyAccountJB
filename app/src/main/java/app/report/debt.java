@@ -52,7 +52,6 @@ public class debt extends Activity implements OnClickListener
 
 	private void saveAccount(String name, String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(3,name,amount);
 	}

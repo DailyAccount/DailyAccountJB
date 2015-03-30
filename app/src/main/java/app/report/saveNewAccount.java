@@ -48,7 +48,6 @@ public class saveNewAccount
     
     public void saveAccount(int level, String name, String amount) 
 	{
-		// TODO Auto-generated method stub
     	check();
     	switch(level)
     	{
@@ -116,7 +115,6 @@ public class saveNewAccount
 
 	private void check() 
 	{
-		// TODO Auto-generated method stub
 		T_expenditure_process dataprocess = new T_expenditure_process(context);
 		T_expenditure_account account = new T_expenditure_account("Start",0);
 		if(dataprocess.getCount() == 0)
@@ -152,7 +150,6 @@ public class saveNewAccount
     
     private int findTotalAmount() 
 	{
-		// TODO Auto-generated method stub
 		T_expenditure_process dataprocess = new T_expenditure_process(context);
 		long length = dataprocess.getCount();
 		Log.i("test size",""+length);

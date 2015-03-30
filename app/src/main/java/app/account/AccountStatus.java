@@ -6,8 +6,7 @@ public class AccountStatus
     private String account;
     private Integer amount;
     
-    public AccountStatus()
-    {
+    public AccountStatus() {
 
     }
     public AccountStatus(String account, Integer amount)

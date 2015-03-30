@@ -38,7 +38,6 @@ public class ReportIncome extends Activity
 
 	private void setListView(String dateMin, String dateMax) 
 	{
-		// TODO Auto-generated method stub
         listView = (ListView) findViewById(R.id.listview);
         
         setAdapter(dateMin,dateMax);
@@ -63,9 +62,6 @@ public class ReportIncome extends Activity
 
 	private void setAdapter(String dateMin, String dateMax) 
 	{
-		// TODO Auto-generated method stub
-		//String set
-		
 	    //String name = ;
 		
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);
@@ -80,7 +76,6 @@ public class ReportIncome extends Activity
 	@SuppressLint("NewApi")
 	private void setList( ArrayAdapter adapter,int dateMin, int dateMax) 
 	{
-		// TODO Auto-generated method stub
 		
 		//String[] name = {"John","Jason","James","Duran"};
 		//String[] name = null;

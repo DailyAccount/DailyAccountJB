@@ -21,7 +21,6 @@ public class T_liability_account
     	
     public T_liability_account(String name, int amount)//, int totalAmount) 
     {
-		// TODO Auto-generated constructor stub
     	this.name = name;
     	this.amount = amount;
 

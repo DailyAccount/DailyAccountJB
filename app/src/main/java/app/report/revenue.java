@@ -56,7 +56,6 @@ public class revenue extends Activity implements OnClickListener
 	
 	private String changeSign(String string)   
 	{
-		// TODO Auto-generated method stub
 		int amount = Integer.parseInt(string);
 		amount *= -1;
 		Log.i("Test amount",""+amount);
@@ -65,7 +64,6 @@ public class revenue extends Activity implements OnClickListener
 
 	private void saveAccount(String name, String amount) 
 	{
-		// TODO Auto-generated method stub
 		saveNewAccount newAccount = new saveNewAccount(this.getBaseContext());
 		newAccount.saveAccount(2, name,amount);
 	}

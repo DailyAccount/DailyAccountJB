@@ -14,11 +14,9 @@ public class T_item_account
 	    
 	public  T_item_account() 
 	{
-	    // TODO Auto-generated constructor stub
 	}
 	public  T_item_account(String name, Integer status)//, int totalAmount) 
 	{
-	    // TODO Auto-generated constructor stub
 	   	this.name = name;
 	   	this.status = status;
 	}

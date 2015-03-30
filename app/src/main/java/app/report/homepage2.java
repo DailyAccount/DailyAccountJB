@@ -184,7 +184,6 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
       
     private void displayText() 
     {
-	 	// TODO Auto-generated method stub
     	Log.i("Extend", "Continue");
 	    int i = viewFlipper.getDisplayedChild();
 	    Animation animation =AnimationUtils.loadAnimation(this, R.anim.extend);
@@ -229,7 +228,6 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
 	@Override
 	public void onClick(View v) 
 	{
-		// TODO Auto-generated method stub
 		 Log.i("image Clicked", "Down!");
 		 switch(viewFlipper.getDisplayedChild())
 		 {
@@ -269,7 +267,6 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
 	@Override
 	public boolean onTouch(View v, MotionEvent event) 
 	{
-		// TODO Auto-generated method stub
 		Log.d("onTouching", "Continue");
 		return gestureDetector.onTouchEvent(event);
 	};  
@@ -304,7 +301,6 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
 
 		public void onClick(View v) 
 		{
-			// TODO Auto-generated method stub 
 			start_intent();
 			
 			
@@ -315,7 +311,6 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
 	
 	private void start_intent() 
 	{
-		// TODO Auto-generated method stub
 		Intent i = new Intent(this, about.class);
 		startActivity(i);
 	}

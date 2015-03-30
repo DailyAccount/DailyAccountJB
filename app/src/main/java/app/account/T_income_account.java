@@ -67,19 +67,16 @@ public class T_income_account
     }
 	public Integer getTotalAmount() 
 	{
-		// TODO Auto-generated method stub
 		return totalAmount;
 	}
  
 	public void setTotalAmount(int amount) 
 	{
-		// TODO Auto-generated method stub
 		this.totalAmount = amount;
 		
 	}
 	public void setDate() 
 	{
-		// TODO Auto-generated method stub
 		Calendar c = Calendar.getInstance();
 		//取得系统日期:
 		this.year = c.get(Calendar.YEAR);
@@ -96,35 +93,29 @@ public class T_income_account
 
 	public Integer getDate_year() 
 	{
-		// TODO Auto-generated method stub
 		return this.year;
 	}
 
 	public Integer getDate_month() {
-		// TODO Auto-generated method stub
 		return this.month;
 	}
 
 	public Integer getDate_day() {
-		// TODO Auto-generated method stub
 		return this.day;
 	}
 	
 	public void setDate_year(int year) 
 	{
-		// TODO Auto-generated method stub
 		this.year = year;
 	}
 
 	public void setDate_month(int month) 
 	{
-		// TODO Auto-generated method stub
 		this.month = month;
 	}
 
 	public void setDate_day(int day) 
 	{
-		// TODO Auto-generated method stub
 		this.day = day;
 	}
 }

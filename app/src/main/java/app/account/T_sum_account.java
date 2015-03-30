@@ -20,7 +20,6 @@ public class T_sum_account
 	    	
 	public  T_sum_account(String name, int sum, int amount)//, int totalAmount) 
 	{
-	    // TODO Auto-generated constructor stub
 	   	this.name = name;
 	   	this.sum = sum;
 	   	this.amount = amount;
