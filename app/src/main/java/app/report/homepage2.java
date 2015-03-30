@@ -1,105 +1,98 @@
-package app.report; 
+package app.report;
 
-import android.app.Activity;  
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;  
+import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
-import android.view.GestureDetector;  
-import android.view.GestureDetector.OnGestureListener;  
-import android.view.MotionEvent;  
-import android.view.View;  
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;  
-import android.widget.ImageView;  
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ViewFlipper;  
-  
-/** 
- * ViewFlipperÊµÏÖË®Æ½»¬¶¯Í¼Æ¬ 
+import android.widget.ViewFlipper;
+
+/**
+ * ViewFlipperÊµï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+ *
  * @author john bi
- * image -> clicked -> ontouch() -> gestureDetector -> onfiling 
- *  
- */  
+ *         image -> clicked -> ontouch() -> gestureDetector -> onfiling
+ */
 
 
-public class homepage2 extends Activity implements OnGestureListener, OnClickListener,  OnTouchListener 
-{  
-    private ViewFlipper viewFlipper;  
-    private ViewFlipper viewFlipper_sub;  
-    private GestureDetector gestureDetector;  
-    private View text_account,text_report,text_plan,text_about,text_exit;
+public class homepage2 extends Activity implements OnGestureListener, OnClickListener, OnTouchListener {
+    private ViewFlipper viewFlipper;
+    private ViewFlipper viewFlipper_sub;
+    private GestureDetector gestureDetector;
+    private View text_account, text_report, text_plan, text_about, text_exit;
     private LinearLayout home_img_bn_Layout, style_img_bn_layout, cam_img_bn_layout, shopping_img_bn_layout, show_img_bn_layout;
-      
-    // ÉùÃ÷Í¼Æ¬×ÊÔ´Êý×é  
-    private int[] imageResIds = { R.drawable.account, R.drawable.exit,R.drawable.about,
-    		R.drawable.plan,R.drawable.scroll }; 
+
+    // ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½  
+    private int[] imageResIds = {R.drawable.account, R.drawable.exit, R.drawable.about,
+            R.drawable.plan, R.drawable.scroll};
     // All picture is setted by 300 *300
     //Small size is 150 *150
-  
-    @Override  
-    public void onCreate(Bundle savedInstanceState) 
-    {  
-        super.onCreate(savedInstanceState);  
-        setContentView(R.layout.homepage3);  
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.homepage3);
         Log.i("goes in", "Continue!");
         //viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);  
-          
-        gestureDetector = new GestureDetector(this);  
-        viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);  
-        viewFlipper_sub = (ViewFlipper) findViewById(R.id.viewFlipper_sub); 
-        
+
+        gestureDetector = new GestureDetector(this);
+        viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
+        viewFlipper_sub = (ViewFlipper) findViewById(R.id.viewFlipper_sub);
+
         text_account = this.findViewById(R.id.text_newaccount);
         text_report = this.findViewById(R.id.text_monthlyreport);
         text_plan = this.findViewById(R.id.text_plan);
         text_about = this.findViewById(R.id.text_about);
         text_exit = this.findViewById(R.id.text_exit);
-  
+
         home_img_bn_Layout = (LinearLayout) findViewById(R.id.bottom_home_layout_ly);
         home_img_bn_Layout.setOnClickListener(clickListener_home);
-        
-        for (int i = 0; i < imageResIds.length; i++) 
-        {  
-            viewFlipper.addView(addImageView(i));  
-            viewFlipper_sub.addView(addImageView((i+imageResIds.length-1)%imageResIds.length));
-        }  
-  
-        Animation animation =AnimationUtils.loadAnimation(this, R.anim.extend);
+
+        for (int i = 0; i < imageResIds.length; i++) {
+            viewFlipper.addView(addImageView(i));
+            viewFlipper_sub.addView(addImageView((i + imageResIds.length - 1) % imageResIds.length));
+        }
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.extend);
         text_account.setAnimation(animation);
-    }  
-      
-    /** 
-     * ÎªViewFlipperÌí¼ÓÍ¼Æ¬ÊÓÍ¼ 
-     */  
-    private View addImageView(int position) 
-    {  
-        ImageView imageView = new ImageView(this);  
-        imageView.setImageResource(imageResIds[position]);  
+    }
+
+    /**
+     * ÎªViewFlipperï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Í¼
+     */
+    private View addImageView(int position) {
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(imageResIds[position]);
         //imageView.setAlpha(125);
         //imageView.isClickable();
         imageView.setOnClickListener(this);
         /*set the image is clickable
-        goes to onclick method*/ 
+        goes to onclick method*/
         imageView.setOnTouchListener(this);
         /*set the image is touchable
          * goes to onTouch method 
          * then goes to onfling method
          */
-        return imageView;  
-    }  
-  
-    
-    
-    
-    @Override  
-    public boolean onDown(MotionEvent e) 
-    {  /*
-    	Log.i("image Clicked", "Down!");
+        return imageView;
+    }
+
+
+    @Override
+    public boolean onDown(MotionEvent e) {  /*
+        Log.i("image Clicked", "Down!");
     	for(int i = 0;i<3;i++)
     	{
     		View v = viewFlipper.getCurrentView();
@@ -109,209 +102,191 @@ public class homepage2 extends Activity implements OnGestureListener, OnClickLis
     		}
             
     	}*/
-        return false;  
-    }  
-  
-    @Override  
-    public void onShowPress(MotionEvent e) {  
-    }  
-  
-    @Override  
-    public boolean onSingleTapUp(MotionEvent e) {  
-        return false;  
-    }  
-  
-    @Override  
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) 
-    {  
-        return false;  
-    }  
-  
-    @Override  
-    public void onLongPress(MotionEvent e) 
-    {  
-    }  
-  
-    /** 
-     * ÊÖÖ¸»¬¶¯ÊÂ¼þ»Øµ÷·½·¨ 
-     */  
-    @Override  
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) 
-    {  
-        if(e1.getY() - e2.getY() > 100.0f) 
-        { // Ïò×ó£¨Ç°£©»¬¶¯£¬ÏÔÊ¾ÏÂÒ»ÕÅÍ¼Æ¬  
-              
-            viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_out)); 
-            viewFlipper.showNext(); 
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+    }
+
+    /**
+     * ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        if (e1.getY() - e2.getY() > 100.0f) { // ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬
+
+            viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_out));
+            viewFlipper.showNext();
             viewFlipper.showPrevious();
             viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_in));
             //viewFlipper.setAlpha(125);
-            viewFlipper.showNext();  
-            
-            viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_out)); 
-            viewFlipper_sub.showNext(); 
+            viewFlipper.showNext();
+
+            viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_out));
+            viewFlipper_sub.showNext();
             viewFlipper_sub.showPrevious();
             viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_up_in));
             //viewFlipper_sub.setAlpha(125);
-            viewFlipper_sub.showNext();  
+            viewFlipper_sub.showNext();
             displayText();
-            return true;  
-        } 
-        else 
-        {
-        	if(e1.getY() - e2.getY() < -100.0f) 
-        	{ 
-        		// Ïòºó£¨ÓÒ£©»¬¶¯£¬ÏÔÊ¾ÉÏÒ»ÕÅÍ¼Æ¬  
-        		viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_out));  
-                viewFlipper.showPrevious();  
+            return true;
+        } else {
+            if (e1.getY() - e2.getY() < -100.0f) {
+                // ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬
+                viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_out));
+                viewFlipper.showPrevious();
                 viewFlipper.showNext();
                 viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_in));
-                viewFlipper.showPrevious();  
-                
-                viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_out));  
-                viewFlipper_sub.showPrevious();  
+                viewFlipper.showPrevious();
+
+                viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_out));
+                viewFlipper_sub.showPrevious();
                 viewFlipper_sub.showNext();
                 viewFlipper_sub.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_down_in));
-                viewFlipper_sub.showPrevious(); 
+                viewFlipper_sub.showPrevious();
                 displayText();
-                return true;  
-            }  
+                return true;
+            }
         }
-        
-        //Log.d("onfiling", "Continue");
-        return false;  
-    }  
-      
-    private void displayText() 
-    {
-    	Log.i("Extend", "Continue");
-	    int i = viewFlipper.getDisplayedChild();
-	    Animation animation =AnimationUtils.loadAnimation(this, R.anim.extend);
-	    switch(i)
-	    {
-	     case 0:
-	    	 //new account
-			 
-			 text_account.setAnimation(animation);
-			 break;
-	     case 1:
-	    	 //exit
-			 text_exit.setAnimation(animation);
-			 break;
-	     case 2:
-	    	 //about
-			 text_about.setAnimation(animation);
-		     break;
-	     case 3:
-	    	 //set my plan
-	    	 text_plan.setAnimation(animation);
-	    	 break;
-	     case 4:
-	    	 //monthly report
-	    	 text_report.setAnimation(animation);
-	    	 break;
-		 default:
-			 break;
-	    	
-	    }
-	}
 
-	/** 
-     * ½«µ±Ç°ActivityµÄ´¥ÃþÊÂ¼þ»Øµ÷·½·¨Ö¸ÅÉÓÉgestureDetector¶ÔÏó½øÐÐµ÷¶È 
-     */  
-    @Override  
-    public boolean onTouchEvent(MotionEvent event) 
-    {  
-        return gestureDetector.onTouchEvent(event);  
+        //Log.d("onfiling", "Continue");
+        return false;
     }
 
-	@Override
-	public void onClick(View v) 
-	{
-		 Log.i("image Clicked", "Down!");
-		 switch(viewFlipper.getDisplayedChild())
-		 {
-		     case 0:
-		    	 //new account
-		    	 openNewGameDialog();
-		    	 /*
+    private void displayText() {
+        Log.i("Extend", "Continue");
+        int i = viewFlipper.getDisplayedChild();
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.extend);
+        switch (i) {
+            case 0:
+                //new account
+
+                text_account.setAnimation(animation);
+                break;
+            case 1:
+                //exit
+                text_exit.setAnimation(animation);
+                break;
+            case 2:
+                //about
+                text_about.setAnimation(animation);
+                break;
+            case 3:
+                //set my plan
+                text_plan.setAnimation(animation);
+                break;
+            case 4:
+                //monthly report
+                text_report.setAnimation(animation);
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½Ç°Activityï¿½Ä´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½gestureDetectorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.i("image Clicked", "Down!");
+        switch (viewFlipper.getDisplayedChild()) {
+            case 0:
+                //new account
+                openNewGameDialog();
+                 /*
 		    	 Intent i = new Intent(this,newAccount.class);
 	    	     startActivity(i);
 	    	     */
-    			 break;
-		     case 1:
-		    	 //exit
-		    	 finish();
-     			 break;
-		     case 2:
-		    	 Intent k = new Intent(this, about.class);
-	    	     startActivity(k);
-		    	 //about
-			     break;
-		     case 3:
-		    	 //set my plan
-		    	 Intent l = new Intent(this, ListItem.class);//MyPlan.class);
-	    	     startActivity(l);
-		    	 break;
-		     case 4:
-		    	 //monthly report
-		    	 Intent t = new Intent(this,monthReport.class);
-	    	     startActivity(t);
-		    	 break;
-			 default:
-				 break;
-		 }
-		 
-	}
+                break;
+            case 1:
+                //exit
+                finish();
+                break;
+            case 2:
+                Intent k = new Intent(this, about.class);
+                startActivity(k);
+                //about
+                break;
+            case 3:
+                //set my plan
+                Intent l = new Intent(this, ListItem.class);//MyPlan.class);
+                startActivity(l);
+                break;
+            case 4:
+                //monthly report
+                Intent t = new Intent(this, monthReport.class);
+                startActivity(t);
+                break;
+            default:
+                break;
+        }
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) 
-	{
-		Log.d("onTouching", "Continue");
-		return gestureDetector.onTouchEvent(event);
-	};  
+    }
 
-	private void openNewGameDialog()
-    {
-    	new AlertDialog.Builder(this)
-    	.setTitle(R.string.choosecategory).setItems(R.array.difficulty,
-    	 new DialogInterface.OnClickListener()
-    	{
-    		public void onClick(DialogInterface dialoginterface, int i)
-    		{
-    			//int diff = getIntent().getIntExtra(KEY_DIFFICULTY,INCOME);
-    			startGame(i);
-    		}
-    	}).show();
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        Log.d("onTouching", "Continue");
+        return gestureDetector.onTouchEvent(event);
     }
-    
-    private void startGame(int i)
-    {
-    	//Log.d(TAG,"clicked on "+i);
-    	Intent intent = new Intent(homepage2.this,category.class);
-    	//startActivity(i);
-    	intent.putExtra(category.KEY_DIFFICULTY, i);
-    	startActivity(intent);
+
+    ;
+
+    private void openNewGameDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.choosecategory).setItems(R.array.difficulty,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialoginterface, int i) {
+                        //int diff = getIntent().getIntExtra(KEY_DIFFICULTY,INCOME);
+                        startGame(i);
+                    }
+                }).show();
     }
-    
+
+    private void startGame(int i) {
+        //Log.d(TAG,"clicked on "+i);
+        Intent intent = new Intent(homepage2.this, category.class);
+        //startActivity(i);
+        intent.putExtra(category.KEY_DIFFICULTY, i);
+        startActivity(intent);
+    }
+
     // It is the listener of the button clickListener_home
-    private OnClickListener clickListener_home = new OnClickListener() 
-    {
-		
+    private OnClickListener clickListener_home = new OnClickListener() {
 
-		public void onClick(View v) 
-		{
-			start_intent();
-			
-			
-		}
 
-		
-	};
-	
-	private void start_intent() 
-	{
-		Intent i = new Intent(this, about.class);
-		startActivity(i);
-	}
+        public void onClick(View v) {
+            start_intent();
+
+
+        }
+
+
+    };
+
+    private void start_intent() {
+        Intent i = new Intent(this, about.class);
+        startActivity(i);
+    }
 } 

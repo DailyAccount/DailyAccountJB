@@ -10,91 +10,82 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
+
 import app.process.T_liability_process;
 import app.report.R;
 import app.report.R.id;
 import app.report.R.layout;
 
-public class ReportLiability extends Activity
-{
-	
-	 private ListView listView;
-	 //private String[] name = {"John","Jason","James","Duran"};
-	
-	 protected void onCreate(Bundle savedInstanceState)
-	 {
-		 Log.i("Working", "Enter the monthReport");
-	  	 super.onCreate(savedInstanceState);
-	   	 setContentView(R.layout.monthreport);
-	   	 
-	   	 setListView();
-	 }
+public class ReportLiability extends Activity {
 
-	private void setListView() 
-	{
+    private ListView listView;
+    //private String[] name = {"John","Jason","James","Duran"};
+
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.i("Working", "Enter the monthReport");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.monthreport);
+
+        setListView();
+    }
+
+    private void setListView() {
         listView = (ListView) findViewById(R.id.listview);
-        
+
         setAdapter();
         listView.setClickable(true);
-        
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-        	
-        	public void onItemClick(AdapterView<?> parent, View view,     int position, long id) 
-        	{   //ÕâÀïÃæ¿ÉÒÔÅªswitch£¨position£©»òÕß±ðµÄ
-        	    //case£¨1£©
-        		Log.d("ListView", "Working"+position);
-       
-        	}//¾ÍÌø×ªµ½ÁíÒ»¸öÒ³Ãæ
 
-		
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åªswitchï¿½ï¿½positionï¿½ï¿½ï¿½ï¿½ï¿½ß±ï¿½ï¿½
+                //caseï¿½ï¿½1ï¿½ï¿½
+                Log.d("ListView", "Working" + position);
+
+            }//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ò³ï¿½ï¿½
+
+
         });
 
-	}
+    }
 
-	private void setAdapter() 
-	{
-		//String set
-		
-	    //String name = ;
-		
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,0);
-        
+    private void setAdapter() {
+        //String set
+
+        //String name = ;
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, 0);
+
         setList(adapter);
-        
-        //adapter.addAll(name);
-		
-		listView.setAdapter(adapter);		
-	}
 
-	@SuppressLint("NewApi")
-	private void setList( ArrayAdapter adapter) 
-	{
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//String[] name = null;
-		//name[0]="John";
-		//name[1]="Jason";
-		T_liability_process dataprocess = new T_liability_process(this.getBaseContext());
-   	    long length = dataprocess.getCount();
-   	    //Log.i("Database size", length+""+name[1]);
-   	    //AccountEntry account;
-   	    for(int i = 1; i<=(int)length;i++)
-   	    {
-   	    	//DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
-   	    	//name[i-1] = 
-   	    	//adapter.addAll(dataprocess1.find(i).getAccount());
-   	    	adapter.add(dataprocess.find(i).getName()+"   "+dataprocess.find(i).getAmount());
-   	    	adapter.add("DueTime:  "+dataprocess.find(i).getDueTime());
-   	    	//name[i-1] = String.valueOf(account.getAccount());
-   	    }
-   	    //return name;
-   	    
-		
-		//String[] name = {"John","Jason","James","Duran"};
-		//return name;
-		
-	}
+        //adapter.addAll(name);
+
+        listView.setAdapter(adapter);
+    }
+
+    @SuppressLint("NewApi")
+    private void setList(ArrayAdapter adapter) {
+
+        //String[] name = {"John","Jason","James","Duran"};
+        //String[] name = null;
+        //name[0]="John";
+        //name[1]="Jason";
+        T_liability_process dataprocess = new T_liability_process(this.getBaseContext());
+        long length = dataprocess.getCount();
+        //Log.i("Database size", length+""+name[1]);
+        //AccountEntry account;
+        for (int i = 1; i <= (int) length; i++) {
+            //DataAccountProcess dataprocess1 = new DataAccountProcess(this.getBaseContext());
+            //name[i-1] =
+            //adapter.addAll(dataprocess1.find(i).getAccount());
+            adapter.add(dataprocess.find(i).getName() + "   " + dataprocess.find(i).getAmount());
+            adapter.add("DueTime:  " + dataprocess.find(i).getDueTime());
+            //name[i-1] = String.valueOf(account.getAccount());
+        }
+        //return name;
+
+
+        //String[] name = {"John","Jason","James","Duran"};
+        //return name;
+
+    }
 }
