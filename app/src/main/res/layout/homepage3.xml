@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="left"
-    android:background="@drawable/background"> 
+    android:background="@drawable/background">
 
     <ViewFlipper
         android:id="@+id/viewFlipper"
@@ -11,10 +11,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:duplicateParentState="true" >
+        android:duplicateParentState="true"></ViewFlipper>
 
-
-    </ViewFlipper>
     <EditText
         android:id="@+id/text_monthlyreport"
         android:layout_width="150dp"
@@ -44,7 +42,7 @@
         android:ems="10"
         android:enabled="false"
         android:inputType="textPersonName"
-        android:text="About" >
+        android:text="About">
 
         <requestFocus />
     </EditText>
@@ -78,7 +76,7 @@
         android:layout_height="100dp"
         android:layout_marginRight="40dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-    </ViewFlipper>
-<include layout="@layout/footbar_layout_bottom"></include>
+        android:layout_alignParentTop="true"></ViewFlipper>
+
+    <include layout="@layout/footbar_layout_bottom"></include>
 </RelativeLayout>
