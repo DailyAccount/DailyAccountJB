@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>  
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-    android:layout_width="match_parent"  
-    android:layout_height="match_parent"  
-    android:gravity="center" 
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
     android:background="@drawable/background">
 
     <ViewFlipper
@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="150dp"
-        android:duplicateParentState="true" >
+        android:duplicateParentState="true">
 
     </ViewFlipper>
 
@@ -20,8 +20,7 @@
         android:layout_height="150dp"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="500dp"
-        android:layout_marginRight="84dp" >
-    </ViewFlipper>
+        android:layout_marginRight="84dp"></ViewFlipper>
 
     <EditText
         android:id="@+id/text_newaccount"
@@ -81,5 +80,5 @@
         android:enabled="false"
         android:inputType="textPersonName"
         android:text="Set My Plan" />
-    
+
 </RelativeLayout>  

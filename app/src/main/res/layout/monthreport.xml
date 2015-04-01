@@ -2,30 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/beginningdate"
-            android:layout_width="240dp"
-            android:layout_height="60dp"
-            android:ems="10"
-            android:hint="Start Day(2013521)" >
+    <EditText
+        android:id="@+id/beginningdate"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="Start Day(2013521)">
 
-            <requestFocus />
-        </EditText>
+        <requestFocus />
+    </EditText>
 
-        <EditText
-            android:id="@+id/endingdate"
-            android:layout_width="240dp"
-            android:layout_height="60dp"
-            android:ems="10"
-            android:hint="end day(2013523)" />
+    <EditText
+        android:id="@+id/endingdate"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="end day(2013523)" />
 
-        <Button
-            android:id="@+id/search"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+    <Button
+        android:id="@+id/search"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="Search" />
 
     <ListView
         android:id="@+id/listview"
@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:focusable="false"
-        android:focusableInTouchMode="false" >
+        android:focusableInTouchMode="false">
 
     </ListView>
 

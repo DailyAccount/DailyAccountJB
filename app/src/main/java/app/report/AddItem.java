@@ -8,17 +8,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
-import app.account.AccountStatus;
-import app.process.DataStatusProcess;
-import app.report.*;
-
 
 public class AddItem extends Activity implements OnClickListener {
     private EditText accountText, amountText;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addnewitem);
+        setContentView(R.layout.add_new_item);
 
         View saveButton = this.findViewById(R.id.addnewitem_save);
         saveButton.setOnClickListener(this);

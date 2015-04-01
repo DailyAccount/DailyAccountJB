@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
+    android:orientation="vertical"
     android:background="@drawable/background">
+
     <Button
         android:id="@+id/account_button"
         android:layout_width="fill_parent"
@@ -35,7 +36,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/homepage_exit" />
-    
+
     <Button
         android:id="@+id/about_button"
         android:layout_width="fill_parent"
